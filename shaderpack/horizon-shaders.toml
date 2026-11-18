@@ -1,0 +1,170 @@
+schema = 1
+id = "horizon_featherlight"
+name = "Horizon FeatherLight"
+version = "2.0.0"
+api = "0.2"
+description = "One configurable Intel UHD shader pack: POTATO, LOW, BALANCED and QUALITY, real optional shadows, no custom volumetric fog."
+authors = ["Horizon FeatherLight"]
+license = "MIT"
+shared = ["common.wgsl"]
+
+[sky]
+file = "sky.wgsl"
+name = "Feather sky"
+
+[material]
+file = "material.wgsl"
+name = "Feather materials"
+
+[shadow]
+resolution = 512
+distance = 48.0
+option = "shadows"
+resolution_option = "shadow_resolution"
+distance_option = "shadow_distance"
+
+[[post]]
+file = "post/grade.wgsl"
+name = "Feather colour grade"
+
+[[options]]
+id = "quality_mode"
+name = "Preset"
+description = "POTATO is cheapest; QUALITY has the richest lighting. BALANCED is recommended for Intel UHD 620."
+type = "choice"
+values = ["POTATO", "LOW", "BALANCED", "QUALITY"]
+default = "BALANCED"
+
+[[options]]
+id = "shadows"
+name = "Real shadows"
+description = "Creates a real sun shadow map. Disable for POTATO or LOW performance."
+type = "bool"
+default = false
+
+[[options]]
+id = "shadow_resolution"
+name = "Shadow resolution"
+description = "256 is fastest, 512 is recommended, 1024 is sharper."
+type = "choice"
+values = ["256", "512", "1024"]
+default = "256"
+
+[[options]]
+id = "shadow_distance"
+name = "Shadow distance"
+description = "Shorter distances improve speed and shadow detail."
+type = "choice"
+values = ["32", "48", "72"]
+default = "32"
+
+[[options]]
+id = "color_grade"
+name = "Colour grade"
+description = "Enhanced vanilla colour correction. Native Horizon fog remains unchanged."
+type = "bool"
+default = false
+
+[[options]]
+id = "saturation"
+name = "Saturation"
+description = "Colour intensity. 1.00 is neutral."
+type = "float"
+default = 1.00
+min = 0.85
+max = 1.25
+step = 0.01
+
+[[options]]
+id = "contrast"
+name = "Contrast"
+description = "Global image contrast. 1.00 is neutral."
+type = "float"
+default = 1.00
+min = 0.90
+max = 1.15
+step = 0.01
+
+[[options]]
+id = "vignette"
+name = "Vignette"
+description = "A subtle darkening at the screen edges."
+type = "bool"
+default = false
+
+[[options]]
+id = "cloud_style"
+name = "Cloud overlay"
+description = "Optional procedural cloud layer: Soft, Layered or Stylized. Horizon native clouds remain available."
+type = "choice"
+values = ["OFF", "SOFT", "LAYERED", "STYLIZED"]
+default = "OFF"
+
+[[options]]
+id = "sun_glow"
+name = "Sun glow"
+description = "Adds a warm halo around the sun near the horizon."
+type = "bool"
+default = false
+
+[[options]]
+id = "star_boost"
+name = "Bright stars"
+description = "Boosts the existing night sky brightness."
+type = "bool"
+default = false
+
+[[options]]
+id = "water_style"
+name = "Water style"
+description = "Optional colour styling for water surfaces."
+type = "choice"
+values = ["OFF", "AZURE", "TROPICAL", "DEEP BLUE"]
+default = "OFF"
+
+[[options]]
+id = "cinematic_warmth"
+name = "Cinematic warmth"
+description = "Adds warm sunrise and sunset colour grading."
+type = "bool"
+default = false
+
+[[pages]]
+id = "main"
+name = "FeatherLight"
+items = ["page:preset", "page:shadows", "page:atmosphere", "page:water", "page:image", ""]
+
+[[pages]]
+id = "preset"
+name = "Preset"
+description = "Choose the main performance and visual tier."
+columns = 1
+items = ["quality_mode"]
+
+[[pages]]
+id = "shadows"
+name = "Shadows"
+description = "Enable and size the real shadow map."
+items = ["shadows", "shadow_resolution", "shadow_distance", ""]
+
+[[pages]]
+id = "atmosphere"
+name = "Atmosphere"
+description = "Optional sky and atmosphere styling."
+items = ["cloud_style", "sun_glow", "star_boost", ""]
+
+[[pages]]
+id = "water"
+name = "Water"
+description = "Optional water colour styles."
+columns = 1
+items = ["water_style"]
+
+[[pages]]
+id = "image"
+name = "Image"
+description = "Tune colour without custom volumetric fog."
+items = ["color_grade", "cinematic_warmth", "vignette", "saturation", "contrast", ""]
+
+[budget]
+gpu_ms = 1.80
