@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.4 — 2026-11-18
+
+- Lowers the default night brightness from 90% to 70%.
+- Keeps the full 65% to 100% Night brightness adjustment range.
+
 ## 2.0.3 — 2026-11-18
 
 - Slightly darkens nights by 10% while preserving smooth dawn and dusk transitions.

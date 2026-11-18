@@ -1,7 +1,7 @@
 schema = 1
 id = "horizon_featherlight"
 name = "Horizon FeatherLight"
-version = "2.0.3"
+version = "2.0.4"
 api = "0.2"
 description = "One configurable Intel UHD shader pack: POTATO, LOW, BALANCED and QUALITY, real optional shadows, no custom volumetric fog."
 authors = ["Horizon FeatherLight"]
@@ -129,7 +129,7 @@ id = "night_brightness"
 name = "Night brightness"
 description = "Controls scene brightness at night while keeping sunrise and sunset transitions smooth."
 type = "float"
-default = 0.90
+default = 0.70
 min = 0.65
 max = 1.00
 step = 0.05
