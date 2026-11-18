@@ -23,5 +23,6 @@ fn sky(input: SkyInput) -> vec4<f32> {
     if cloud_style == 3u { cloud_mask = step(0.58, soft_noise * 0.5 + 0.5); }
     graded = mix(graded, vec3<f32>(0.92, 0.95, 1.0), cloud_mask * cloud_band * clear_day * 0.34);
     let night_boost = select(1.0, mix(1.22, 1.0, day), star_boost);
-    return vec4<f32>((graded + warm) * night_boost, input.color.a);
+    let night_scale = mix(night_brightness, 1.0, day);
+    return vec4<f32>((graded + warm) * night_boost * night_scale, input.color.a);
 }

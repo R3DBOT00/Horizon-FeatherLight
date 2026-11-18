@@ -50,7 +50,8 @@ fn material(input: MaterialInput) -> Surface {
     let base_shadowed = looked * daylight_tint * mix(vec3<f32>(1.0), shadow_tint, day_night_strength);
     let rich_lighting = input.albedo.rgb * (input.emission * 0.18 + input.colored_light * 0.20);
     let extra = select(vec3<f32>(0.0), rich_lighting, quality_mode >= 3u);
-    let base = base_shadowed * (1.0 + sun_facing * 0.075) + extra;
+    let night_scale = mix(night_brightness, 1.0, day);
+    let base = (base_shadowed * (1.0 + sun_facing * 0.075) + extra) * night_scale;
     var water = base;
     if water_style == 1u { water = base * vec3<f32>(0.76, 0.96, 1.22) + vec3<f32>(0.0, 0.035, 0.075); }
     if water_style == 2u { water = base * vec3<f32>(0.70, 1.06, 1.12) + vec3<f32>(0.0, 0.055, 0.050); }

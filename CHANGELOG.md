@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.3 — 2026-11-18
+
+- Slightly darkens nights by 10% while preserving smooth dawn and dusk transitions.
+- Adds a Night brightness slider from 65% to 100%, defaulting to 90%.
+- Applies the adjustment consistently to terrain, water, and sky.
+
 ## 2.0.2 — 2026-11-18
 
 - Removes striped shadow acne with slope-scaled receiver bias.

@@ -12,7 +12,7 @@ Open **Options → Video Settings → Shaders → Shader Packs**, select **Horiz
 
 - **Preset:** POTATO, LOW, BALANCED, or QUALITY.
 - **Shadows:** enable or disable the real shadow map, choose a 256/512/1024 resolution, and select a 32/48/72-block distance.
-- **Atmosphere:** Soft, Layered, or Stylized procedural cloud overlays, sun glow, and brighter stars.
+- **Atmosphere:** Soft, Layered, or Stylized procedural cloud overlays, sun glow, brighter stars, and adjustable night brightness.
 - **Water:** Off, Azure, Tropical, or Deep Blue.
 - **Image:** color grading, cinematic warmth, vignette, saturation, and contrast.
 
@@ -20,10 +20,10 @@ The controls use Horizon API `override` constants. Unselected visual branches ar
 
 ## Installation
 
-Copy `dist/Horizon-FeatherLight-2.0.2.hshader` into Horizon's `shaderpacks` directory. On a standard Linux installation:
+Copy `dist/Horizon-FeatherLight-2.0.3.hshader` into Horizon's `shaderpacks` directory. On a standard Linux installation:
 
 ```bash
-cp dist/Horizon-FeatherLight-2.0.2.hshader ~/.local/share/horizon/shaderpacks/
+cp dist/Horizon-FeatherLight-2.0.3.hshader ~/.local/share/horizon/shaderpacks/
 ```
 
 Select the pack from the in-game shader menu. Your choices are saved next to the package in the `shaderpacks` directory.
@@ -38,7 +38,7 @@ The packable source is in `shaderpack/`. Validate and rebuild the package with:
 
 ```bash
 horizon-shader check shaderpack --json
-horizon-shader pack shaderpack --out dist/Horizon-FeatherLight-2.0.2.hshader
+horizon-shader pack shaderpack --out dist/Horizon-FeatherLight-2.0.3.hshader
 sha256sum -c SHA256SUMS
 ```
 
