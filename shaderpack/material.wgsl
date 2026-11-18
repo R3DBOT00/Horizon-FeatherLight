@@ -56,6 +56,10 @@ fn material(input: MaterialInput) -> Surface {
     if water_style == 1u { water = base * vec3<f32>(0.76, 0.96, 1.22) + vec3<f32>(0.0, 0.035, 0.075); }
     if water_style == 2u { water = base * vec3<f32>(0.70, 1.06, 1.12) + vec3<f32>(0.0, 0.055, 0.050); }
     if water_style == 3u { water = base * vec3<f32>(0.58, 0.78, 1.18) + vec3<f32>(0.0, 0.018, 0.082); }
-    let rgb = select(base, water, input.fluid == 1u && water_style != 0u);
+    let water_luma = luminance(water);
+    let water_night_saturation = mix(0.58, 1.0, day);
+    let water_night_brightness = mix(0.58, 1.0, day);
+    let night_corrected_water = mix(vec3<f32>(water_luma), water, water_night_saturation) * water_night_brightness;
+    let rgb = select(base, night_corrected_water, input.fluid == 1u);
     return Surface(vec4<f32>(rgb, vanilla.a));
 }

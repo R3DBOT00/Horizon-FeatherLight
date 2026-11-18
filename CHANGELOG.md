@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.6 — 2026-11-18
+
+- Prevents water from looking emissive or neon at night.
+- Progressively reduces water brightness and blue saturation after sunset.
+- Preserves the existing daytime water appearance and all selectable water styles.
+
 ## 2.0.5 — 2026-11-18
 
 - Sets the default night brightness to 60%.
