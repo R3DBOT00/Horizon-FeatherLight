@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.0-alpha.2 — 2026-11-18
+
+- Raises the API 0.1 default night brightness from 60% to 75% for clearer terrain and structures after sunset.
+- Adds verifiable Ed25519 signatures for release packages and the checksum manifest.
+
 ## 2.1.0-alpha.1 — 2026-11-18
 
 - Adds a separate prerelease build for Horizon Shader API 0.1.

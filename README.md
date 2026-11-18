@@ -30,10 +30,10 @@ Select the pack from the in-game shader menu. Your choices are saved next to the
 
 ## API 0.1 alpha
 
-`dist/Horizon-FeatherLight-API01-2.1.0-alpha.1.hshader` is a separate prerelease for older Horizon builds that serve Shader API 0.1. It uses the stable gamma/SDR frame, does not require `HORIZON_HDR_FRAME=float`, and has its own pack ID. API 0.1 uses a flat options menu and lightweight directional shading because those runtimes do not expose native menu pages, a shadow map, material normals, colored lights, emission, or fluid identity. It was runtime-tested on Horizon 0.2.97. Current API 0.2-only nightlies refuse this compatibility package by design.
+`dist/Horizon-FeatherLight-API01-2.1.0-alpha.2.hshader` is a separate prerelease for older Horizon builds that serve Shader API 0.1. It uses the stable gamma/SDR frame, does not require `HORIZON_HDR_FRAME=float`, and has its own pack ID. API 0.1 uses a flat options menu and lightweight directional shading because those runtimes do not expose native menu pages, a shadow map, material normals, colored lights, emission, or fluid identity. Alpha 2 defaults to 75% night brightness for clearer terrain and structures. It was runtime-tested on Horizon 0.2.97. Current API 0.2-only nightlies refuse this compatibility package by design.
 
 ```bash
-cp dist/Horizon-FeatherLight-API01-2.1.0-alpha.1.hshader ~/.local/share/horizon/shaderpacks/
+cp dist/Horizon-FeatherLight-API01-2.1.0-alpha.2.hshader ~/.local/share/horizon/shaderpacks/
 ```
 
 ## Recommended Intel UHD 620 settings
@@ -54,8 +54,10 @@ The API 0.1 alpha source is in `shaderpack-api01/` and can be rebuilt with:
 
 ```bash
 horizon-shader check shaderpack-api01 --json
-horizon-shader pack shaderpack-api01 --out dist/Horizon-FeatherLight-API01-2.1.0-alpha.1.hshader
+horizon-shader pack shaderpack-api01 --out dist/Horizon-FeatherLight-API01-2.1.0-alpha.2.hshader
 ```
+
+Release packages and `SHA256SUMS` have Ed25519 signatures. See [SIGNING.md](SIGNING.md) for the public key, fingerprint, and verification commands.
 
 ## Repository layout
 

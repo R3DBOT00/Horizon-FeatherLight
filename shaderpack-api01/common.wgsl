@@ -6,7 +6,7 @@ override vignette: bool = false;
 override cloud_style: u32 = 0u;
 override sun_glow: bool = false;
 override star_boost: bool = false;
-override night_brightness: f32 = 0.60;
+override night_brightness: f32 = 0.75;
 override cinematic_warmth: bool = false;
 
 fn luminance(c: vec3<f32>) -> f32 {
