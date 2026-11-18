@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.5 — 2026-11-18
+
+- Sets the default night brightness to 60%.
+- Expands the Night brightness slider range to 40% through 100%.
+
 ## 2.0.4 — 2026-11-18
 
 - Lowers the default night brightness from 90% to 70%.
