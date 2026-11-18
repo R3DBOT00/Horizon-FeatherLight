@@ -1,0 +1,105 @@
+schema = 1
+id = "horizon_featherlight_api01_alpha"
+name = "Horizon FeatherLight API 0.1 Alpha"
+version = "2.1.0-alpha.1"
+api = "0.1"
+description = "Alpha gamma/SDR build for Horizon Shader API 0.1: four presets, lightweight directional shading, and no custom volumetric fog."
+authors = ["Horizon FeatherLight"]
+license = "MIT"
+shared = ["common.wgsl"]
+
+[sky]
+file = "sky.wgsl"
+name = "Feather sky"
+
+[material]
+file = "material.wgsl"
+name = "Feather materials"
+
+[[post]]
+file = "post/grade.wgsl"
+name = "Feather colour grade"
+
+[[options]]
+id = "quality_mode"
+name = "Preset"
+description = "POTATO is cheapest; QUALITY has the richest lighting. BALANCED is recommended for Intel UHD 620."
+type = "choice"
+values = ["POTATO", "LOW", "BALANCED", "QUALITY"]
+default = "BALANCED"
+
+[[options]]
+id = "color_grade"
+name = "Colour grade"
+description = "Enhanced vanilla colour correction. Native Horizon fog remains unchanged."
+type = "bool"
+default = false
+
+[[options]]
+id = "saturation"
+name = "Saturation"
+description = "Colour intensity. 1.00 is neutral."
+type = "float"
+default = 1.00
+min = 0.85
+max = 1.25
+step = 0.01
+
+[[options]]
+id = "contrast"
+name = "Contrast"
+description = "Global image contrast. 1.00 is neutral."
+type = "float"
+default = 1.00
+min = 0.90
+max = 1.15
+step = 0.01
+
+[[options]]
+id = "vignette"
+name = "Vignette"
+description = "A subtle darkening at the screen edges."
+type = "bool"
+default = false
+
+[[options]]
+id = "cloud_style"
+name = "Cloud overlay"
+description = "Optional procedural cloud layer: Soft, Layered or Stylized. Horizon native clouds remain available."
+type = "choice"
+values = ["OFF", "SOFT", "LAYERED", "STYLIZED"]
+default = "OFF"
+
+[[options]]
+id = "sun_glow"
+name = "Sun glow"
+description = "Adds a warm halo around the sun near the horizon."
+type = "bool"
+default = false
+
+[[options]]
+id = "star_boost"
+name = "Bright stars"
+description = "Boosts the existing night sky brightness."
+type = "bool"
+default = false
+
+[[options]]
+id = "night_brightness"
+name = "Night brightness"
+description = "Controls scene brightness at night while keeping sunrise and sunset transitions smooth."
+type = "float"
+default = 0.60
+min = 0.40
+max = 1.00
+step = 0.05
+
+[[options]]
+id = "cinematic_warmth"
+name = "Cinematic warmth"
+description = "Adds warm sunrise and sunset colour grading."
+type = "bool"
+default = false
+
+[budget]
+gpu_ms = 1.80

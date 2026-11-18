@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.1.0-alpha.1 — 2026-11-18
+
+- Adds a separate prerelease build for Horizon Shader API 0.1.
+- Uses the stable gamma/SDR frame and does not require the experimental HDR-frame switch.
+- Uses a separate pack ID so the API 0.1 alpha can coexist with the API 0.2 release.
+- Retains the configurable presets, night brightness, atmosphere, and image controls in a flat menu.
+- Replaces the unavailable API 0.2 shadow map with lightweight directional shading.
+- Omits water-specific controls because API 0.1 does not identify fluid materials.
+- Runtime-tested on Horizon 0.2.97 at approximately 60 FPS in the captured scene.
+
 ## 2.0.7 — 2026-11-18
 
 - Restores the natural blue color of water at night.

@@ -28,6 +28,14 @@ cp dist/Horizon-FeatherLight-2.0.7.hshader ~/.local/share/horizon/shaderpacks/
 
 Select the pack from the in-game shader menu. Your choices are saved next to the package in the `shaderpacks` directory.
 
+## API 0.1 alpha
+
+`dist/Horizon-FeatherLight-API01-2.1.0-alpha.1.hshader` is a separate prerelease for older Horizon builds that serve Shader API 0.1. It uses the stable gamma/SDR frame, does not require `HORIZON_HDR_FRAME=float`, and has its own pack ID. API 0.1 uses a flat options menu and lightweight directional shading because those runtimes do not expose native menu pages, a shadow map, material normals, colored lights, emission, or fluid identity. It was runtime-tested on Horizon 0.2.97. Current API 0.2-only nightlies refuse this compatibility package by design.
+
+```bash
+cp dist/Horizon-FeatherLight-API01-2.1.0-alpha.1.hshader ~/.local/share/horizon/shaderpacks/
+```
+
 ## Recommended Intel UHD 620 settings
 
 Start with BALANCED, 512/72 shadows, and all optional effects disabled. Use 256/48 shadows when additional performance is needed. QUALITY with 1024/96 shadows prioritizes image quality.
@@ -42,10 +50,18 @@ horizon-shader pack shaderpack --out dist/Horizon-FeatherLight-2.0.7.hshader
 sha256sum -c SHA256SUMS
 ```
 
+The API 0.1 alpha source is in `shaderpack-api01/` and can be rebuilt with:
+
+```bash
+horizon-shader check shaderpack-api01 --json
+horizon-shader pack shaderpack-api01 --out dist/Horizon-FeatherLight-API01-2.1.0-alpha.1.hshader
+```
+
 ## Repository layout
 
 ```text
 shaderpack/   Editable manifest and WGSL shader sources
+shaderpack-api01/   API 0.1 alpha source
 dist/         Ready-to-install package
 docs/         Screenshots and additional documentation
 SHA256SUMS    Published package integrity checksum
