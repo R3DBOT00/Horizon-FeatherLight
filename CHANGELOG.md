@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.7 — 2026-11-18
+
+- Restores the natural blue color of water at night.
+- Keeps night water dark while retaining 90% of its color saturation.
+- Avoids both the gray appearance of 2.0.6 and the neon appearance of earlier versions.
+
 ## 2.0.6 — 2026-11-18
 
 - Prevents water from looking emissive or neon at night.
