@@ -11,3 +11,7 @@ Thumbs.db
 # Temporary build output; the versioned dist package is intentionally tracked
 *.tmp
 *.log
+
+# Local Horizon server identity generated during runtime tests
+featherlight.key
+featherlight.pub
