@@ -1,5 +1,11 @@
 # Changelog
 
+## Registry versions — 2026-11-18
+
+- Aligns the Shader API 0.2 package manifest with registry version 1.0.0.
+- Aligns the legacy Shader API 0.1 package manifest with registry version 1.1.0.
+- Adds Horizon-compatible Minisign signatures for registry submission.
+
 ## 2.1.0-alpha.2 — 2026-11-18
 
 - Raises the API 0.1 default night brightness from 60% to 75% for clearer terrain and structures after sunset.

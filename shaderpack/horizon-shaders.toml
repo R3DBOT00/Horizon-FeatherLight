@@ -1,7 +1,7 @@
 schema = 1
 id = "horizon_featherlight"
 name = "Horizon FeatherLight"
-version = "2.0.7"
+version = "1.0.0"
 api = "0.2"
 description = "One configurable Intel UHD shader pack: POTATO, LOW, BALANCED and QUALITY, real optional shadows, no custom volumetric fog."
 authors = ["Horizon FeatherLight"]
