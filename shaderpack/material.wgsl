@@ -2,20 +2,24 @@ fn shadow_visibility(position: vec3<f32>, normal: vec3<f32>) -> f32 {
     if !shadows || quality_mode < 2u || frame.has_shadow == 0u {
         return 1.0;
     }
-    let p = shadow_position(position + normal * 0.012);
+    let light_facing = clamp(abs(dot(normalize(normal), normalize(frame.sun_direction))), 0.0, 1.0);
+    let slope = 1.0 - light_facing;
+    let normal_bias = 0.022 + shadow_world_texel() * 0.22 * slope;
+    let p = shadow_position(position + normal * normal_bias);
     let inside = all(p.xy >= vec2<f32>(0.0)) && all(p.xy <= vec2<f32>(1.0));
     if !inside {
         return 1.0;
     }
+    let compare_depth = p.z - (0.00020 + slope * 0.00035);
     let edge = min(min(p.x, 1.0 - p.x), min(p.y, 1.0 - p.y));
     let edge_fade = smoothstep(0.0, 0.055, edge);
     if quality_mode == 2u {
-        let sample = textureSampleCompareLevel(shadow_map, shadow_sampler, p.xy, p.z);
+        let sample = textureSampleCompareLevel(shadow_map, shadow_sampler, p.xy, compare_depth);
         return mix(1.0, sample, edge_fade);
     }
     let texel = vec2<f32>(1.0) / vec2<f32>(textureDimensions(shadow_map));
-    let a = textureSampleCompareLevel(shadow_map, shadow_sampler, p.xy + texel * vec2<f32>(-0.45, -0.45), p.z);
-    let b = textureSampleCompareLevel(shadow_map, shadow_sampler, p.xy + texel * vec2<f32>(0.45, 0.45), p.z);
+    let a = textureSampleCompareLevel(shadow_map, shadow_sampler, p.xy + texel * vec2<f32>(-0.45, -0.45), compare_depth);
+    let b = textureSampleCompareLevel(shadow_map, shadow_sampler, p.xy + texel * vec2<f32>(0.45, 0.45), compare_depth);
     return mix(1.0, (a + b) * 0.5, edge_fade);
 }
 

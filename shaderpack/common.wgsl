@@ -1,6 +1,8 @@
 override quality_mode: u32 = 2u;
-override shadows: bool = false;
-override shadow_strength: f32 = 0.90;
+override shadows: bool = true;
+override shadow_resolution: u32 = 1u;
+override shadow_distance: u32 = 1u;
+override shadow_strength: f32 = 1.0;
 override color_grade: bool = false;
 override saturation: f32 = 1.0;
 override contrast: f32 = 1.0;
@@ -21,4 +23,15 @@ fn daylight() -> f32 {
 
 fn sun_low() -> f32 {
     return 1.0 - smoothstep(0.0, 0.35, abs(frame.sun_direction.y));
+}
+
+fn shadow_world_texel() -> f32 {
+    var resolution = 256.0;
+    if shadow_resolution == 1u { resolution = 512.0; }
+    if shadow_resolution >= 2u { resolution = 1024.0; }
+    var distance = 48.0;
+    if shadow_distance == 1u { distance = 72.0; }
+    if shadow_distance == 2u { distance = 96.0; }
+    if shadow_distance >= 3u { distance = 128.0; }
+    return (distance * 2.0) / resolution;
 }

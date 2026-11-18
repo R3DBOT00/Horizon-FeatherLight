@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.2 — 2026-11-18
+
+- Removes striped shadow acne with slope-scaled receiver bias.
+- Scales bias from the selected shadow resolution and distance.
+- Adds a small depth bias while retaining the normal offset to reduce detached shadows.
+- Matches the tested live preset by default: BALANCED, real shadows on, 512 resolution, 72-block distance, and full shadow strength.
+- Keeps every additional aesthetic effect disabled by default.
+
 ## 2.0.1 — 2026-11-18
 
 - Makes real shadows substantially darker and adds a Shadow strength slider.
