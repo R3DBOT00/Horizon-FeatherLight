@@ -20,17 +20,17 @@ The controls use Horizon API `override` constants. Unselected visual branches ar
 
 ## Installation
 
-Copy `dist/Horizon-FeatherLight-2.0.0.hshader` into Horizon's `shaderpacks` directory. On a standard Linux installation:
+Copy `dist/Horizon-FeatherLight-2.0.1.hshader` into Horizon's `shaderpacks` directory. On a standard Linux installation:
 
 ```bash
-cp dist/Horizon-FeatherLight-2.0.0.hshader ~/.local/share/horizon/shaderpacks/
+cp dist/Horizon-FeatherLight-2.0.1.hshader ~/.local/share/horizon/shaderpacks/
 ```
 
-Select the pack from the in-game shader menu. Your choices are saved in `shaderpacks/Horizon-FeatherLight-2.0.0.txt`.
+Select the pack from the in-game shader menu. Your choices are saved next to the package in the `shaderpacks` directory.
 
 ## Recommended Intel UHD 620 settings
 
-Start with BALANCED, 512/48 shadows, and all optional effects disabled. Use 256/32 shadows when additional performance is needed. QUALITY with 1024/72 shadows prioritizes image quality.
+Start with BALANCED, 512/72 shadows, and all optional effects disabled. Use 256/48 shadows when additional performance is needed. QUALITY with 1024/96 shadows prioritizes image quality.
 
 ## Development
 
@@ -38,7 +38,7 @@ The packable source is in `shaderpack/`. Validate and rebuild the package with:
 
 ```bash
 horizon-shader check shaderpack --json
-horizon-shader pack shaderpack --out dist/Horizon-FeatherLight-2.0.0.hshader
+horizon-shader pack shaderpack --out dist/Horizon-FeatherLight-2.0.1.hshader
 sha256sum -c SHA256SUMS
 ```
 

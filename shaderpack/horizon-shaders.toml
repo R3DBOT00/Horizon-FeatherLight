@@ -1,7 +1,7 @@
 schema = 1
 id = "horizon_featherlight"
 name = "Horizon FeatherLight"
-version = "2.0.0"
+version = "2.0.1"
 api = "0.2"
 description = "One configurable Intel UHD shader pack: POTATO, LOW, BALANCED and QUALITY, real optional shadows, no custom volumetric fog."
 authors = ["Horizon FeatherLight"]
@@ -18,7 +18,7 @@ name = "Feather materials"
 
 [shadow]
 resolution = 512
-distance = 48.0
+distance = 72.0
 option = "shadows"
 resolution_option = "shadow_resolution"
 distance_option = "shadow_distance"
@@ -48,15 +48,25 @@ name = "Shadow resolution"
 description = "256 is fastest, 512 is recommended, 1024 is sharper."
 type = "choice"
 values = ["256", "512", "1024"]
-default = "256"
+default = "512"
 
 [[options]]
 id = "shadow_distance"
 name = "Shadow distance"
-description = "Shorter distances improve speed and shadow detail."
+description = "Larger distances keep shadows visible farther from the player."
 type = "choice"
-values = ["32", "48", "72"]
-default = "32"
+values = ["48", "72", "96", "128"]
+default = "72"
+
+[[options]]
+id = "shadow_strength"
+name = "Shadow strength"
+description = "Controls shadow darkness without changing shadow-map cost."
+type = "float"
+default = 0.90
+min = 0.45
+max = 1.00
+step = 0.05
 
 [[options]]
 id = "color_grade"
@@ -145,7 +155,7 @@ items = ["quality_mode"]
 id = "shadows"
 name = "Shadows"
 description = "Enable and size the real shadow map."
-items = ["shadows", "shadow_resolution", "shadow_distance", ""]
+items = ["shadows", "shadow_resolution", "shadow_distance", "shadow_strength"]
 
 [[pages]]
 id = "atmosphere"

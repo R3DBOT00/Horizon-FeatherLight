@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.1 — 2026-11-18
+
+- Makes real shadows substantially darker and adds a Shadow strength slider.
+- Keeps moonlit shadows visible instead of removing them with the daylight blend.
+- Reduces normal bias so shadows stay attached to their casters.
+- Smoothly fades the shadow-map boundary instead of popping abruptly.
+- Raises the recommended defaults to 512 resolution and 72-block distance.
+- Adds 96- and 128-block shadow-distance choices.
+
 ## 2.0.0 — 2026-11-17
 
 - Combines POTATO, LOW, BALANCED, and QUALITY into one shader pack.

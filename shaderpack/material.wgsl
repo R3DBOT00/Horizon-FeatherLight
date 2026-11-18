@@ -2,18 +2,21 @@ fn shadow_visibility(position: vec3<f32>, normal: vec3<f32>) -> f32 {
     if !shadows || quality_mode < 2u || frame.has_shadow == 0u {
         return 1.0;
     }
-    let p = shadow_position(position + normal * 0.025);
+    let p = shadow_position(position + normal * 0.012);
     let inside = all(p.xy >= vec2<f32>(0.0)) && all(p.xy <= vec2<f32>(1.0));
     if !inside {
         return 1.0;
     }
+    let edge = min(min(p.x, 1.0 - p.x), min(p.y, 1.0 - p.y));
+    let edge_fade = smoothstep(0.0, 0.055, edge);
     if quality_mode == 2u {
-        return textureSampleCompareLevel(shadow_map, shadow_sampler, p.xy, p.z);
+        let sample = textureSampleCompareLevel(shadow_map, shadow_sampler, p.xy, p.z);
+        return mix(1.0, sample, edge_fade);
     }
     let texel = vec2<f32>(1.0) / vec2<f32>(textureDimensions(shadow_map));
     let a = textureSampleCompareLevel(shadow_map, shadow_sampler, p.xy + texel * vec2<f32>(-0.45, -0.45), p.z);
     let b = textureSampleCompareLevel(shadow_map, shadow_sampler, p.xy + texel * vec2<f32>(0.45, 0.45), p.z);
-    return (a + b) * 0.5;
+    return mix(1.0, (a + b) * 0.5, edge_fade);
 }
 
 fn material(input: MaterialInput) -> Surface {
@@ -38,8 +41,9 @@ fn material(input: MaterialInput) -> Surface {
     let sun_facing = max(dot(input.normal, frame.sun_direction), 0.0) * day * input.light.y;
     let daylight_tint = mix(vec3<f32>(1.0), vec3<f32>(1.065, 1.020, 0.955), day * look_strength);
     let visibility = shadow_visibility(input.position, input.normal);
-    let shadow_tint = mix(vec3<f32>(0.30, 0.37, 0.52), vec3<f32>(1.0), visibility);
-    let base_shadowed = looked * daylight_tint * mix(vec3<f32>(1.0), shadow_tint, day);
+    let shadow_tint = mix(vec3<f32>(0.18, 0.23, 0.34), vec3<f32>(1.0), visibility);
+    let day_night_strength = mix(0.70, 1.0, day) * shadow_strength;
+    let base_shadowed = looked * daylight_tint * mix(vec3<f32>(1.0), shadow_tint, day_night_strength);
     let rich_lighting = input.albedo.rgb * (input.emission * 0.18 + input.colored_light * 0.20);
     let extra = select(vec3<f32>(0.0), rich_lighting, quality_mode >= 3u);
     let base = base_shadowed * (1.0 + sun_facing * 0.075) + extra;

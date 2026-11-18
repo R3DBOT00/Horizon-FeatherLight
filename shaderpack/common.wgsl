@@ -1,5 +1,6 @@
 override quality_mode: u32 = 2u;
 override shadows: bool = false;
+override shadow_strength: f32 = 0.90;
 override color_grade: bool = false;
 override saturation: f32 = 1.0;
 override contrast: f32 = 1.0;
