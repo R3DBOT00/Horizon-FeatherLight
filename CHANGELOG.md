@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1 — 2026-11-19
+
+- Adds a fast material path for the default Balanced preset without per-fragment luminance grading.
+- Skips all procedural cloud noise when clouds are disabled, as they are by default.
+- Keeps the 75% night brightness and the existing lightweight directional look.
+
 ## Registry versions — 2026-11-18
 
 - Aligns the Shader API 0.2 package manifest with registry version 1.0.0.

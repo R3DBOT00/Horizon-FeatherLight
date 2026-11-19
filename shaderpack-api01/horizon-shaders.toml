@@ -1,7 +1,7 @@
 schema = 1
 id = "horizon_featherlight_api01_alpha"
 name = "Horizon FeatherLight API 0.1 Alpha"
-version = "1.1.0"
+version = "1.1.1"
 api = "0.1"
 description = "Alpha gamma/SDR build for Horizon Shader API 0.1: four presets, lightweight directional shading, and no custom volumetric fog."
 authors = ["Horizon FeatherLight"]

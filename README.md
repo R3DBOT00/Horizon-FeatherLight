@@ -45,7 +45,7 @@ Start with BALANCED, 512/72 shadows, and all optional effects disabled. Use 256/
 Registry submission artifacts use the versions declared inside each package:
 
 - `dist/horizon_featherlight-1.0.0.hshader` — Shader API 0.2, version 1.0.0.
-- `dist/horizon_featherlight_api01_alpha-1.1.0.hshader` — legacy Shader API 0.1, version 1.1.0.
+- `dist/horizon_featherlight_api01_alpha-1.1.1.hshader` — optimized legacy Shader API 0.1, version 1.1.1.
 
 Their Horizon-compatible signatures use the same filename with `.minisig` appended. See [SIGNING.md](SIGNING.md) for the public key and verification command.
 
